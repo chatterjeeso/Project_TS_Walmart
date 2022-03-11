@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<style>
+			body, html {
+			  height: 100%;
+			  margin: 0;
+			}
+
+			.bg {
+			  /* The image used */
+			  background-image: url("static/image.jpg");
+
+			  /* Full height */
+			  height: 100%; 
+
+			  /* Center and scale the image nicely */
+			  background-position: center;
+			  background-repeat: no-repeat;
+			  background-size: cover;
+			}
+			.label {
+			  color: white;
+			  padding: 8px;
+			  font-family: Arial;
+			}
+		</style>
+	</head>
+<center>
+<body>
+    <center><h2><br/><br/>Predict the sales of weather sensitive products of Walmart<br/><br/></h2></center>
+
+<div class="bg">
+  <br/><br/><br/><br/>
+  <form action="/predict" method="POST">
+	<table>
+		<tr>
+			<td>
+				<label class="labelclr" for="age"><font color="white" size="4"><b>Date </b>(YYYY-MM-DD):</font></label>
+			</td>
+			<td>
+				<input type="text" id="date" name="date">
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<label for="age"><font color="white" size="4"><b>Store Number:</b></font></label>
+			</td>
+			<td>
+				<input type="text" id="store_nbr" name="store_nbr">
+			</td>
+		</tr>
+		
+		
+		<tr>
+			<td>
+				<label for="age"><font color="white" size="4"><b>Item Number:</b></font></label>
+			</td>
+			<td>
+				<input type="text" id="item_nbr" name="item_nbr">
+			</td>
+		</tr>
+    </table>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+</body>
+</center>
+</html>

@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<style>
+			body, html {
+			  height: 100%;
+			  margin: 0;
+			}
+
+			.bg {
+			  /* The image used */
+			  background-image: url("static/image2.jpg");
+
+			  /* Full height */
+			  height: 85%; 
+
+			  /* Center and scale the image nicely */
+			  background-position: center;
+			  background-repeat: no-repeat;
+			  background-size: cover;
+			}
+			.label {
+			  color: white;
+			  padding: 8px;
+			  font-family: Arial;
+			}
+		</style>
+	</head>
+<center>
+<body>
+    <center><h2><br/>Predicted Value (Based on Date, Store Number & Item Number)</h2></center>
+
+<div class="bg">
+	<br/>
+  <form action="/close" method="POST">
+	<table>
+		<tr>
+			<td>
+				<label class="labelclr" for="age"><font color="white" size="4"><b>Prediction: </b></font></label>
+			</td>
+			<td>
+				<label class="labelclr" for="age"><font color="white" size="4"><b>{{ FinalPrediction }}</b></font></label>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<label for="age"><font color="white" size="4"><b>Actual Value</b> (If query point exsists within Dataset):</font></label>
+			</td>
+			<td>
+				<label class="labelclr" for="age"><font color="white" size="4"><b>{{ ActualValue }}</b></font></label>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<label for="age"><font color="white" size="4"><b>Explanation:</b></font></label>
+			</td>
+			<td>
+				<label class="labelclr" for="age"><font color="white" size="4">&#160;<b><br/></b>
+				<p><b>Note:</b> The prediction value might differ slightly. As the best scored regression model that is XGBRegressor is not in used. 
+				Reason being: While loading the corresponding pkl file, it was throwing an error stating the parameter nestimator not found. So had to 
+				use low scroing model Linear Regression.
+				We have contacted tech team to look into this.</p>
+				<p>Based on the Date, Store Number & Item Number shared, this combination is <u><b>{{ CheckAvailable }}</b></u>.
+				
+				So for the available data points we first go through a Linear Model in this case it's Logistic Regression. If it predicts 0 that means
+				we do not expect any Sell for that combination input.
+				If it predicts 1, means we can expect some value.
+				And then we send the query point to Regression model. And output on screen.
+				
+				For not available points we pick the median values of all the feature for the given store number & Month. Send it to Regression model and 
+				output shown on screen
+				</p>
+				</font></label>
+			</td>
+		</tr>
+    </table>
+    <br>
+    <br>
+    <input type="submit" value="Close">
+  </form>
+</div>
+</body>
+</center>
+</html>
